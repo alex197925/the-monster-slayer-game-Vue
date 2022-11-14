@@ -27,6 +27,22 @@ const app = Vue.createApp({
     },
   },
 
+  watch: {
+    // Name of the watch has to be the same name as a property
+    playerHealth(value) {
+      if (value <= 0 && this.monsterHealth <= 0) {
+        // A draw
+      } else if (value <= 0) {
+        // Player Lost
+      }
+    },
+    monsterHealth(value) {
+      if (value <= 0 && this.playerHealth <= 0) {
+        // A draw
+      }
+    },
+  },
+
   methods: {
     attackMonster() {
       this.currentRound++;
