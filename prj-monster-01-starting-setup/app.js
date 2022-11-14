@@ -11,6 +11,7 @@ const app = Vue.createApp({
       playerHealth: 100,
       monsterHealth: 100,
       currentRound: 0,
+      winner: null,
     };
   },
   computed: {
@@ -32,13 +33,19 @@ const app = Vue.createApp({
     playerHealth(value) {
       if (value <= 0 && this.monsterHealth <= 0) {
         // A draw
+        this.winner = "Draw";
       } else if (value <= 0) {
         // Player Lost
+        this.winner = "Monster";
       }
     },
     monsterHealth(value) {
       if (value <= 0 && this.playerHealth <= 0) {
         // A draw
+        this.winner = "Draw";
+      } else if (value <= 0) {
+        // Monster Lost
+        this.winner = "Player";
       }
     },
   },
